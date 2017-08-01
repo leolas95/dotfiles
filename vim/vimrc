@@ -1,0 +1,150 @@
+"=================
+" General
+"=================
+
+" Turn off Vi compatibility
+set nocompatible
+
+" Makes the backspace behaves as it should
+set backspace=indent,eol,start
+
+set background=dark
+set ruler
+set showcmd
+
+" Show line numbers relative to the current line (starting with zero, the
+" current line)
+set relativenumber
+
+set encoding=utf-8
+
+" Don't redraw the screen while executing macros, registers and other commands
+" not typed (for performance)
+set lazyredraw
+
+" Remap the leader key
+let mapleader = ","
+let g:mapleader = ","
+
+set nowrap
+set wildmenu
+set undofile
+set undodir=~/.vim/undodir
+
+"==================
+" Vundle plugins
+"==================
+
+
+filetype off				" Turns of filetype detection
+set rtp+=~/.vim/bundle/Vundle.vim	"Sets the runtime path to include Vundle
+call vundle#begin()			"REQUIRED
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'majutsushi/tagbar'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'rust-lang/rust.vim'
+Plugin 'vivien/vim-linux-coding-style'
+
+call vundle#end()
+" Turn filetype, plugin and indent detection rules on again
+filetype plugin indent on
+
+
+"=====================
+" Tabs, spaces, indent
+"=====================
+
+set autoindent		"Autoindent based on previous line
+set smartindent		"Smart autoindent on new line
+
+"==================
+" Searching
+"==================
+
+set incsearch		"Find as you type
+set ignorecase		"Ignore case in search
+set hlsearch		"Highlight matches in search
+
+"==========================
+" Colors, fonts, UI
+"==========================
+
+set t_Co=256
+syntax enable
+
+if &t_Co >= 2 || has("gui_running")
+	colorscheme candyman
+endif
+
+set laststatus=2
+let g:airline#extensions#tmuxline#enabled = 0
+let g:tmuxline_theme = 'airline'
+let g:airline_theme="luna"
+
+"=========
+" Syntastic
+"=========
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_c_compiler = "gcc"
+let g:syntastic_check_on_wq = 0
+
+
+"===============
+" Useful mappings
+"===============
+
+" map, noremap = Normal, Visual, Select, Operator-pending modes
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+noremap j gj
+noremap k gk
+
+" nnoremap = Normal mode
+" Deactivates the arrow keys on normal mode.
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <right> <nop>
+nnoremap <left> <nop>
+
+"For people like me who make mistakes when typing :wq very quickly
+:command Wq wq
+:command WQ wq
+:command W w
+:command Q q
+
+"Create a new line without entering in insert mode
+map <leader>o o<ESC>
+map <leader>O O<ESC>
+
+" nmap = Normal mode
+"Turns off highlight search when press <leader> 2 times
+nmap <silent> <leader><leader> :nohlsearch<CR>
+"Shows NERDTree with <leader>.
+nmap <leader>. :NERDTreeToggle<CR>
+"Shows Tagbar with <leader>/
+nmap <leader>/ :TagbarToggle<CR>
+"Hightlights the current line with <leader>l
+nmap <leader>l :set cursorline!<CR>
+"Hightlights the current column with <leader>;
+nmap <leader>; :set cursorcolumn!<CR>
+
+" Turns Syntastic on and off
+nmap <leader>s :SyntasticToggleMode<CR>
+
+"Autocloses the {, ( and " characters
+inoremap { {<CR>}<ESC>ko
+inoremap ( ()<Left>
+inoremap " ""<Left>
