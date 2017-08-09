@@ -83,7 +83,7 @@ endif
 
 set laststatus=2
 let g:airline#extensions#tmuxline#enabled = 0
-let g:tmuxline_theme = 'nightly_fox'
+let g:tmuxline_theme = 'airline'
 let g:airline_theme="wombat"
 
 "=========
