@@ -78,13 +78,13 @@ set t_Co=256
 syntax enable
 
 if &t_Co >= 2 || has("gui_running")
-	colorscheme candyman
+	colorscheme wombat
 endif
 
 set laststatus=2
 let g:airline#extensions#tmuxline#enabled = 0
-let g:tmuxline_theme = 'airline'
-let g:airline_theme="luna"
+let g:tmuxline_theme = 'nightly_fox'
+let g:airline_theme="wombat"
 
 "=========
 " Syntastic
