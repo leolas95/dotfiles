@@ -62,6 +62,10 @@ filetype plugin indent on
 set autoindent		"Autoindent based on previous line
 set smartindent		"Smart autoindent on new line
 
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd Filetype html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd Filetype javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
+
 "==================
 " Searching
 "==================
@@ -145,6 +149,6 @@ nmap <leader>; :set cursorcolumn!<CR>
 nmap <leader>s :SyntasticToggleMode<CR>
 
 "Autocloses the {, ( and " characters
-inoremap { {<CR>}<ESC>ko
+inoremap { {}<ESC>i
 inoremap ( ()<Left>
 inoremap " ""<Left>
