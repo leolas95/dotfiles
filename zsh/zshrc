@@ -7,7 +7,7 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="suvash"
+ZSH_THEME="norm"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -82,6 +82,13 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
-alias tmux=tmux -2
+alias zshrld="source ~/.zshrc"
+# For vim to display correctly the fonts color when running inside tmux.
+# See: https://unix.stackexchange.com/questions/118892/tmux-vim-and-solarized
+alias tmux="TERM=xterm-256color /usr/bin/tmux"
 alias rt="rails test"
+alias gitlab='web_search gitlab'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:$HOME/.rvm/bin"

@@ -49,6 +49,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'rust-lang/rust.vim'
 Plugin 'vivien/vim-linux-coding-style'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-ruby/vim-ruby'
 
 call vundle#end()
 " Turn filetype, plugin and indent detection rules on again
@@ -62,9 +64,17 @@ filetype plugin indent on
 set autoindent		"Autoindent based on previous line
 set smartindent		"Smart autoindent on new line
 
-autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd Filetype html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+autocmd Filetype eruby setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+autocmd Filetype html setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+autocmd Filetype yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+autocmd Filetype css setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+autocmd Filetype scss setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 autocmd Filetype javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
+
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
 "==================
 " Searching
