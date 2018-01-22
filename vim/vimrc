@@ -48,8 +48,6 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'rust-lang/rust.vim'
-Plugin 'vivien/vim-linux-coding-style'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-ruby/vim-ruby'
 
 call vundle#end()
@@ -64,6 +62,12 @@ filetype plugin indent on
 set autoindent		"Autoindent based on previous line
 set smartindent		"Smart autoindent on new line
 
+" shiftwidth: Number of spaces to use when indenting
+" tabstop: Number of spaces to insert when the TAB key is pressed
+" softtabstop: Number of spaces of a TAB when editing. Makes the BS key treat
+" the sapces like a real TAB
+" expandtab: When the TAB key is pressed, insert spaces instead of tabs
+
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 autocmd Filetype eruby setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 autocmd Filetype html setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
@@ -71,6 +75,7 @@ autocmd Filetype yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 autocmd Filetype css setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 autocmd Filetype scss setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 autocmd Filetype javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd Filetype c setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
@@ -97,8 +102,9 @@ endif
 
 set laststatus=2
 let g:airline#extensions#tmuxline#enabled = 0
-let g:tmuxline_theme = 'airline'
-let g:airline_theme="wombat"
+"let g:tmuxline_theme = 'airline'
+let g:airline_theme="luna"
+let g:airline_powerline_fonts = 1
 
 "=========
 " Syntastic
@@ -111,6 +117,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_c_compiler = "gcc"
+let g:syntastic_c_checkers = ['gcc']
 let g:syntastic_check_on_wq = 0
 
 
@@ -154,6 +161,11 @@ nmap <leader>/ :TagbarToggle<CR>
 nmap <leader>l :set cursorline!<CR>
 "Hightlights the current column with <leader>;
 nmap <leader>; :set cursorcolumn!<CR>
+
+nmap <leader>b :ls<CR>:b<space>
+nmap <C-n> :bnext<CR>
+nmap <C-p> :bprev<CR>
+nmap <C-x> :close<CR>
 
 " Turns Syntastic on and off
 nmap <leader>s :SyntasticToggleMode<CR>
